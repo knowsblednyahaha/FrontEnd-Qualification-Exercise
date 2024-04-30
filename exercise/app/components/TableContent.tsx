@@ -1,103 +1,83 @@
-import React from "react";
-import { ArrowLeft, ArrowRight } from "lucide-react";
-import { Select } from "@chakra-ui/react";
-import { Button, ButtonGroup } from "@chakra-ui/react";
+import React, { Suspense } from "react";
 import {
   Table,
-  Thead,
-  Tbody,
-  Tfoot,
-  Tr,
-  Th,
-  Td,
+  TableBody,
   TableCaption,
-  TableContainer,
-} from "@chakra-ui/react";
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 import Filters from "./Filters";
 
 const TableContent = () => {
   return (
-    <TableContainer
-      className="w-full bg-[#0B1D26] table-auto border border-gray-500"
-      overflowY="hidden"
-      overflowX="auto"
-      display="block"
-      maxWidth="100%"
-      whiteSpace="nowrap"
-    >
-      <Table variant="simple" className="w-full flex flex-col" size="md">
+    <section className="w-full bg-[#0B1D26] table-auto border border-gray-500 rounded-xl">
+      <Suspense>
         <Filters />
-        <Thead className="w-full">
-          <Tr>
-            <Th>Name</Th>
-            <Th>Verification Status</Th>
-            <Th>Balance</Th>
-            <Th>Email Address</Th>
-            <Th>Mobile Number</Th>
-            <Th>Domain</Th>
-            <Th>Date Registered</Th>
-            <Th>Status</Th>
-            <Th>Date and Time Last Active</Th>
-          </Tr>
-        </Thead>
-        <Tbody className="w-full">
-          <Tr>
-            <Td>Botmind23r23</Td>
-            <Td>Verified</Td>
-            <Td>39.00</Td>
-            <Td>olivia@untitledui.com</Td>
-            <Td>+63 (976) 003 517</Td>
-            <Td>https://scaleforge.tech/</Td>
-            <Td>2024 Apr 12</Td>
-            <Td>Active</Td>
-            <Td>2024 Apr 12 08:30 PM</Td>
-          </Tr>
-        </Tbody>
-        <Tfoot>
-          <Tr display="flex" alignItems="center" justifyContent="flex-end">
-            <Th>
-              {" "}
-              <div>
-                <Select
-                  placeholder="10 Entries"
-                  size="sm"
-                  bg="#0B1D26"
-                  color="white"
-                  borderColor="white"
-                  borderRadius="md"
-                >
-                  <option value="option1">Option 1</option>
-                  <option value="option2">Option 2</option>
-                  <option value="option3">Option 3</option>
-                </Select>
-              </div>
-            </Th>
-            <Th>
-              <ButtonGroup spacing={4}>
-                <Button
-                  colorScheme="#0B1D26"
-                  variant="outline"
-                  leftIcon={<ArrowLeft />}
-                  size="sm"
-                  color="white"
-                >
-                  Previous
-                </Button>
-                <Button
-                  colorScheme="#0B1D26"
-                  variant="outline"
-                  rightIcon={<ArrowRight />}
-                  size="sm"
-                  color="white"
-                >
-                  Next
-                </Button>
-              </ButtonGroup>
-            </Th>
-          </Tr>
-        </Tfoot>
+      </Suspense>
+      <Table className="overflow-x-auto">
+        <TableHeader className="overflow-x-auto">
+          <TableRow className="hover:bg-transparent">
+            <TableHead className="w-[150px] text-sm">Name</TableHead>
+            <TableHead className="w-[160px]">Verification Status</TableHead>
+            <TableHead className="w-[160px]">Balance</TableHead>
+            <TableHead className="w-[170px]">Email Address</TableHead>
+            <TableHead className="w-[170px]">Mobile Number</TableHead>
+            <TableHead className="w-[170px]">Domain</TableHead>
+            <TableHead className="w-[170px]">Date Registered</TableHead>
+            <TableHead className="w-[170px]">Status</TableHead>
+            <TableHead className="w-[300px]">
+              Date and Time Last Active
+            </TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody className="overflow-x-auto">
+          <TableRow className="hover:bg-transparent">
+            <TableCell className="font-medium">Botmind23r23</TableCell>
+            <TableCell>Verified</TableCell>
+            <TableCell>39.00</TableCell>
+            <TableCell>olivia@untitledui.com</TableCell>
+            <TableCell>+63 (976) 003 517</TableCell>
+            <TableCell>https://scaleforge.tech/</TableCell>
+            <TableCell>2024 Apr 12</TableCell>
+            <TableCell>Active</TableCell>
+            <TableCell>2024 Apr 12 08:30 PM</TableCell>
+          </TableRow>
+        </TableBody>
       </Table>
-    </TableContainer>
+      <Pagination className="p-5 justify-end">
+        <PaginationContent className="!gap-0">
+          <PaginationItem className="mr-5">
+            <PaginationLink className="!w-full !p-3 border border-gray-500 ">
+              10 Entries
+            </PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationPrevious
+              className="border border-gray-500 rounded-r-none"
+              href="#"
+            />
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationNext
+              className="border border-l-0 border-gray-500 rounded-l-none"
+              href="#"
+            />
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
+    </section>
   );
 };
 

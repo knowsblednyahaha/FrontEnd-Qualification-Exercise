@@ -1,23 +1,13 @@
 import React from "react";
 import { Select } from "@chakra-ui/react";
+import { NameFilters } from "./Filters/Filters";
 
 const Filters = () => {
   return (
     <div className="w-full flex items-center gap-x-5 p-5 border-b border-gray-500">
-      <div>Filters</div>
+      <h3>Filters</h3>
       <div>
-        <Select
-          placeholder="Name"
-          size="sm"
-          bg="#171717"
-          color="gray"
-          borderColor="gray"
-          borderRadius="md"
-        >
-          <option value="option1">Option 1</option>
-          <option value="option2">Option 2</option>
-          <option value="option3">Option 3</option>
-        </Select>
+        <NameFilters />
       </div>
       <div>
         <Select
